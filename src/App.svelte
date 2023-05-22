@@ -18,20 +18,12 @@ function handleTags(event) {
 
 <Tags
     on:tags={handleTags}
-    addKeys={[9]}
+   
+    autoCompleteShowKey={"alpha3Code"}
+    autoCompleteKey={"name"}
     maxTags={5}
-    allowPaste={true}
-    allowDrop={true}
-    splitWith={"/"}
-    onlyUnique={false}
-    removeKeys={[27]}
-    placeholder={"Type Input "}
+    placeholder={"Tags Input..."}
     
-    name={"custom-name"}
-    id={"custom-id"}
-    allowBlur={true}
-    disable={false}
-    minChars={3}
 		
 />
 

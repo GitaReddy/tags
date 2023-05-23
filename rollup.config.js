@@ -5,6 +5,7 @@ import terser from '@rollup/plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
+import copy from 'rollup-plugin-copy'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -44,9 +45,16 @@ export default {
 				dev: !production
 			}
 		}),
+		copy({
+            targets: [{ 
+                src: 'node_modules/bootstrap/dist/**/*', 
+                dest: 'public/vendor/bootstrap' 
+            }]
+		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
+		
 
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
@@ -59,6 +67,7 @@ export default {
 			exportConditions: ['svelte']
 		}),
 		commonjs(),
+		
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
